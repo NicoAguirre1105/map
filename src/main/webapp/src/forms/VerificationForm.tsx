@@ -8,10 +8,14 @@ interface Form {
     code: string
 }
 
+interface Errors {
+    code?: string
+}
 
-export function VerificationForm({changeStep}: FormProps){
+
+const VerificationForm = ({changeStep}: FormProps) => {
     const validateForm = (form: Form) => {
-        let errors = {code:""}
+        let errors:Errors = {}
 
                 const regexCode = /^[0-9]{6}$/
         
@@ -30,7 +34,7 @@ export function VerificationForm({changeStep}: FormProps){
 
     return (
         <>
-            <form onSubmit={() => handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <p className="copy-text">Please enter your 6-digit code that has been sent to your email address. This code is valid for 5 minutes!</p>
                 <input type="text" name="code" placeholder="Verification Code" onChange={handleChange} onBlur={handleBlur} value={form.code}/>
                 <div className="error-container">
@@ -41,3 +45,5 @@ export function VerificationForm({changeStep}: FormProps){
         </>
     )
 }
+
+export default VerificationForm

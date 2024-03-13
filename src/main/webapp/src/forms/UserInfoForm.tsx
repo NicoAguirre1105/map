@@ -11,15 +11,17 @@ interface Form {
     role: string,
 }
 
+interface Errors {
+    name?: string,
+    lastName?: string,
+    org?: string,
+    role?: string,
+}
 
-export function UserInfoForm({changeStep}: FormProps){
+
+const UserInfoForm = ({changeStep}: FormProps) => {
     const validateForm = (form: Form) => {
-        let errors = {
-            name:"",
-            lastName:"",
-            org:"",
-            role:""
-        }
+        let errors:Errors = {}
         
         if(!form.name.trim()){
             errors.name = "This field must be filled"
@@ -36,7 +38,7 @@ export function UserInfoForm({changeStep}: FormProps){
 
     return (
         <>
-            <form onSubmit={() => handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <input type="text" name="name" placeholder="Name" onChange={handleChange} onBlur={handleBlur} value={form.name}/>
                 <div className="error-container">
                     {errors.name && <p className="error-message">{errors.name}</p>}
@@ -58,3 +60,5 @@ export function UserInfoForm({changeStep}: FormProps){
         </>
     )
 }
+
+export default UserInfoForm

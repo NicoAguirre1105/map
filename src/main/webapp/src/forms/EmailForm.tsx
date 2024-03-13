@@ -8,9 +8,13 @@ interface Form {
     email: string
 }
 
-export function EmailForm({changeStep}:FormProps){
+interface Errors {
+    email?: string
+}
+
+const EmailForm = ({changeStep}:FormProps) => {
     const validateForm = (form:Form) => {
-        let errors = {email:""}
+        let errors:Errors = {}
 
         const regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/
 
@@ -29,7 +33,7 @@ export function EmailForm({changeStep}:FormProps){
 
     return (
         <>
-            <form onSubmit={() => handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <p className="copy-text">Please enter email address. We will send you a temporarly code to you email.</p>
                 <input type="email" name="email" placeholder="Email" onChange={handleChange} onBlur={handleBlur} value={form.email}/>
                 <div className="error-container">
@@ -40,3 +44,5 @@ export function EmailForm({changeStep}:FormProps){
         </>
     )
 }
+
+export default EmailForm

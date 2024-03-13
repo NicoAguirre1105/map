@@ -11,12 +11,14 @@ interface Form {
     password: string
 }
 
+interface Errors {
+    email?: string,
+    password?: string
+}
+
 
 const validateForm = (form: Form) => {
-    let errors = {
-        email:"",
-        password:""
-    }
+    let errors:Errors = {}
     
     const regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/
     
@@ -41,7 +43,7 @@ const LoginForm = ({changeStep, changeMode}: FormProps) => {
 
     return (
         <>
-            <form onSubmit={() => handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <input type="email" name="email" placeholder="Email" onChange={handleChange} onBlur={handleBlur} value={form.email} required/>
                 <div className="error-container">
                     {errors.email && <p className="error-message">{errors.email}</p>}

@@ -9,9 +9,14 @@ interface Form {
     repPassword: string
 }
 
-export function PasswordForm({changeStep}:FormProps){
+interface Errors {
+    password?: string,
+    repPassword?: string
+}
+
+const PasswordForm = ({changeStep}:FormProps) => {
     const validateForm = (form: Form) => {
-        let errors = {password:"", repPassword:""}
+        let errors:Errors = {}
 
         const regexPassword = /^(?=.*[0-9])(?=.*[!@#$%^&*])[ЁёА-яa-zA-Z0-9!@#$%^&*]{7,15}$/
 
@@ -35,7 +40,7 @@ export function PasswordForm({changeStep}:FormProps){
 
     return (
         <>
-            <form onSubmit={() => handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <p className="copy-text">Please enter your new password</p>
                 <input type="password" name="password" placeholder="Password" onChange={handleChange} onBlur={handleBlur} value={form.password}/>
                 <div className="error-container">
@@ -50,3 +55,5 @@ export function PasswordForm({changeStep}:FormProps){
         </>
     )
 }
+
+export default PasswordForm

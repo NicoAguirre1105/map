@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-interface Form {
+interface Form_prompt {
     email?: string,
     password?: string,
     repPassword?: string,
@@ -11,20 +11,9 @@ interface Form {
     role?: string
 }
 
-interface Errors {
-    email: string,
-    password: string,
-    repPassword: string,
-    code: string,
-    name: string,
-    lastName: string,
-    org: string,
-    role: string
-}
-
 interface FormReturn {
-    form: Form,
-    errors: Errors,
+    form: Form_prompt,
+    errors: Form_prompt,
     loading: boolean,
     response: number,
     handleChange: (e: React.FormEvent<HTMLInputElement>) => void,
@@ -41,23 +30,12 @@ interface FormElement extends HTMLFormElement {
 }
 
 export function useForm(
-    initialForm: Form, 
+    initialForm: Form_prompt, 
     validateForm: Function, 
     submit: Function
     ): FormReturn{
     const [form, setForm] = useState(initialForm);
-    const [errors, setErrors] = useState(
-        {
-            email: "",
-            password: "",
-            repPassword: "",
-            code: "",
-            name: "",
-            lastName: "",
-            org: "",
-            role: ""
-        }
-        )
+    const [errors, setErrors] = useState({})
     const [loading, setLoading] = useState(false)
     const [response, setResponse] = useState(0)
     const [tried, setTried] = useState(false)
@@ -80,6 +58,7 @@ export function useForm(
         setTried(true)
         let temp_errors = validateForm(form) 
         setErrors(temp_errors)
+        console.log(Object.keys(temp_errors).length)
 
         if(Object.keys(temp_errors).length === 0){
             setLoading(true)

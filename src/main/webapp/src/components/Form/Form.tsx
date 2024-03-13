@@ -1,9 +1,9 @@
 import LoginForm from "../../forms/LoginForm";
-import { RegisterForm } from "../../forms/RegisterForm";
-import { UserInfoForm } from "../../forms/UserInfoForm";
-import { VerificationForm } from "../../forms/VerificationForm";
-import { PasswordForm } from "../../forms/NewPasswordForm";
-import { EmailForm } from "../../forms/EmailForm"
+import RegisterForm from "../../forms/RegisterForm";
+import UserInfoForm from "../../forms/UserInfoForm";
+import VerificationForm from "../../forms/VerificationForm";
+import PasswordForm from "../../forms/PasswordForm";
+import EmailForm from "../../forms/EmailForm"
 // import { EditInfoForm } from "../../forms/EditInfoForm";
 import "./Form.css"
 

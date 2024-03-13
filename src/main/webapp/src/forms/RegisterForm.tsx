@@ -6,12 +6,14 @@ interface Form {
     repPassword: string
 }
 
+interface Errors {
+    email?: string,
+    password?: string,
+    repPassword?: string
+}
+
 const validateForm = (form: Form) => {
-    let errors = {
-        email:"", 
-        password:"",
-        repPassword:""
-    }
+    let errors:Errors = {}
     
     const regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/
     const regexPassword = /^(?=.*[0-9])(?=.*[!@#$%^&*])[ЁёА-яa-zA-Z0-9!@#$%^&*]{7,15}$/
@@ -43,7 +45,7 @@ interface FormProps {
     changeMode: Function
 }
 
-export function RegisterForm({changeStep, changeMode}:FormProps) {
+const RegisterForm = ({changeStep, changeMode}:FormProps) => {
     const  initialForm = {email:"", password:"", repPassword:""}
     const {form, errors, loading, response, handleChange, handleBlur, handleSubmit} = useForm(initialForm, validateForm, changeStep)
 
@@ -73,3 +75,5 @@ export function RegisterForm({changeStep, changeMode}:FormProps) {
         </>
     )
 }   
+
+export default RegisterForm
