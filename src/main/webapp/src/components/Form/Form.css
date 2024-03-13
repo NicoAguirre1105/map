@@ -1,0 +1,142 @@
+.window h3 {
+    font-size: 18px;
+    color: var(--colorA);
+    cursor: default;
+}
+
+.window p {
+    cursor: default;
+    font-size: 14px;
+    color: var(--colorA);
+}
+
+.window .separator {
+    width: 100%;
+    height: 1px;
+    background-color: var(--colorA);
+    margin: 5px 0;
+}
+
+.window .logo {
+    width: 60px;
+    height: 60px;
+    margin: 10px 0;
+    background-color: var(--colorB);
+}
+
+.window form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+}
+
+.window input {
+    align-self: center;
+    width: 90%;
+    font-weight: 500;
+    border: none
+}
+
+/* General style for forms */
+
+.window input[type="email"], 
+.window input[type="password"],
+.window input[type="text"] {
+    padding: 3px 7px;
+    background-color: var(--colorW);
+    color: var(--colorA);
+    border: 2px solid var(--colorW);
+    border-bottom: 2px solid var(--colorA);
+}
+
+.window input[type="email"]::placeholder, 
+.window input[type="password"]::placeholder,
+.window input[type="text"]::placeholder {
+    color: #910aff75;
+}
+
+.window input[type="email"]:focus, 
+.window input[type="password"]:focus,
+.window input[type="text"]:focus {
+    outline: none;
+    border: 2px solid var(--colorA);
+}
+
+.window input[type="submit"], 
+.window button[type="submit"] {
+    padding: 5px 7px;
+    margin-top: 5px;
+    color: var(--colorW);
+    background-color: var(--colorA);
+    margin-bottom: 5px;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.window input[type="submit"]:hover, 
+.window button[type="submit"]:hover {
+    border-radius: 2px;
+    background-color: var(--colorB);
+}
+
+.ext-login-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 5px 0;
+    width: 100%;
+}
+
+.ext-login-container span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    gap: 5px;
+    outline: 1px solid var(--colorW);
+    fill: var(--colorW);
+    color: var(--colorW);
+    background-color: var(--colorB);
+    padding: 4px 0;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.ext-login-container span:hover {
+    background-color: var(--colorA);
+}
+
+.window strong {
+    color: var(--colorB);
+    cursor: pointer;
+}
+
+.window strong:hover {
+    text-decoration: underline;
+}
+
+.window .copy-text {
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    color: var(--colorA);
+}
+
+form .error-message {
+    margin: 0;
+    font-size: 12px;
+    color: var(--colorR);
+}
+
+form .error-container {
+    display: flex;
+    min-height: 15px;
+    margin-left: 15px;
+    align-items: center;
+}
+
+/* Testing other type of message */
+
+/* .window .error-message {
+    display: none;
+} */

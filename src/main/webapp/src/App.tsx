@@ -8,10 +8,11 @@ import About from './pages/about';
 import Home from './pages/home';
 import Presets from './pages/presets';
 import Download from './pages/download';
-import Menu from "./components/Menu/Menu"
+import "./css/App.css"
 
 import ProcessFile from "./pages/processfile";
 import { setRuleSet } from './reducers/counterReducer';
+import Header from './components/Header/Header';
 
 interface Rule {
   id: number;
@@ -60,7 +61,7 @@ function App(): JSX.Element {
       <div className="App">
 
         <Router>
-          <Menu />
+          <Header />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
