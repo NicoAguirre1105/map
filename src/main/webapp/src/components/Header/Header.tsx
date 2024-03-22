@@ -3,6 +3,10 @@ import { Avatar } from "../Avatar/Avatar";
 import WindowPopUp from "../WindowPopUp/WindowPopUp";
 import { Message } from "../Message/Message";
 import "./Header.css"
+import LoginForm from "../../forms/LoginForm";
+import RegisterMultiStep from "../../forms/RegisterMultiStep";
+import PasswordMultiStep from "../../forms/PasswordMultiStep";
+import "./Form.css"
 
 interface MessagePrompt {
     type: string,
@@ -11,16 +15,16 @@ interface MessagePrompt {
 
 const Header = () => {
 
-    const [mode, setMode] = useState("")
+    const [window, setWindow] = useState("")
     const isUser = false
     const [message, setMessage] = useState({type:"", content:""})
 
 
     const handleButtton_Login = () => {
-        setMode("Login")
+        setWindow("Login")
     }
     const handleButtton_Register = () => {
-        setMode("Register")
+        setWindow("Register")
     }
 
     const showMessage = (msg: MessagePrompt) => {
@@ -44,9 +48,7 @@ const Header = () => {
                 </ul>
             </nav>
             <div className="options">
-                {isUser && 
-                    <Avatar/>
-                }
+                {isUser && <Avatar/>}
                 {!isUser && 
                     <>
                         <button className="button-A button-login" onClick={handleButtton_Login}>Login</button>
@@ -55,8 +57,12 @@ const Header = () => {
                 }
             </div>
         </header>
-        {mode !== "" && 
-            <WindowPopUp mode={mode} setMode={setMode} showMessage={showMessage}/>
+        {window !== "" && 
+            <WindowPopUp setWindow={setWindow}>
+                {window === "Login" && <LoginForm setWindow = {setWindow}/>}
+                {window === "Register" && <RegisterMultiStep setWindow={setWindow}/>}
+                {window === "Password" && <PasswordMultiStep setWindow={setWindow}/>}
+            </WindowPopUp> 
         }
         {Object.keys(message).length !== 0 && <Message type={message.type} content={message.content}/>}
         </>

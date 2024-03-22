@@ -40,6 +40,9 @@ const PasswordForm = ({changeStep}:FormProps) => {
 
     return (
         <>
+            <h3>New password</h3>
+            <span className="separator"></span>
+            <div className="logo"></div>
             <form onSubmit={handleSubmit}>
                 <p className="copy-text">Please enter your new password</p>
                 <input type="password" name="password" placeholder="Password" onChange={handleChange} onBlur={handleBlur} value={form.password}/>

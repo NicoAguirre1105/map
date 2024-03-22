@@ -33,6 +33,9 @@ const EmailForm = ({changeStep}:FormProps) => {
 
     return (
         <>
+            <h3>Forget password?</h3>
+            <span className="separator"></span>
+            <div className="logo"></div>
             <form onSubmit={handleSubmit}>
                 <p className="copy-text">Please enter email address. We will send you a temporarly code to you email.</p>
                 <input type="email" name="email" placeholder="Email" onChange={handleChange} onBlur={handleBlur} value={form.email}/>

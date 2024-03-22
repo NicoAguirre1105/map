@@ -38,6 +38,9 @@ const UserInfoForm = ({changeStep}: FormProps) => {
 
     return (
         <>
+            <h3>User information</h3>
+            <span className="separator"></span>
+            <div className="logo"></div>
             <form onSubmit={handleSubmit}>
                 <input type="text" name="name" placeholder="Name" onChange={handleChange} onBlur={handleBlur} value={form.name}/>
                 <div className="error-container">

@@ -34,6 +34,9 @@ const VerificationForm = ({changeStep}: FormProps) => {
 
     return (
         <>
+            <h3>Verification</h3>
+            <span className="separator"></span>
+            <div className="logo"></div>
             <form onSubmit={handleSubmit}>
                 <p className="copy-text">Please enter your 6-digit code that has been sent to your email address. This code is valid for 5 minutes!</p>
                 <input type="text" name="code" placeholder="Verification Code" onChange={handleChange} onBlur={handleBlur} value={form.code}/>
