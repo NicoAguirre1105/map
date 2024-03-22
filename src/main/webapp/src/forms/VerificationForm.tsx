@@ -30,7 +30,7 @@ const VerificationForm = ({changeStep}: FormProps) => {
     }
 
     const  initialForm = {code:""}
-    const {form, errors, loading, response, handleChange, handleBlur, handleSubmit} = useForm(initialForm, validateForm, changeStep)
+    const {form, errors, loading, response, handleChange, handleBlur, handleSubmit} = useForm(initialForm, validateForm, changeStep, "Verification_reg")
 
     return (
         <>

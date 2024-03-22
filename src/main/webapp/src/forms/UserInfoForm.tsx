@@ -34,7 +34,7 @@ const UserInfoForm = ({changeStep}: FormProps) => {
     }
 
     const  initialForm = {name:"", lastName:"", org:"None", role:"None"}
-    const {form, errors, loading, response, handleChange, handleBlur, handleSubmit} = useForm(initialForm, validateForm, changeStep)
+    const {form, errors, loading, response, handleChange, handleBlur, handleSubmit} = useForm(initialForm, validateForm, changeStep, "")
 
     return (
         <>

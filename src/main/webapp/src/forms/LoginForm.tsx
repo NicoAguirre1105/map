@@ -39,7 +39,7 @@ const validateForm = (form: Form) => {
 
 const LoginForm = ({changeStep, changeMode}: FormProps) => {
     const  initialForm = {email:"", password:""}
-    const {form, errors, loading, response, handleChange, handleBlur, handleSubmit} = useForm(initialForm, validateForm, changeStep)
+    const {form, errors, loading, response, handleChange, handleBlur, handleSubmit} = useForm(initialForm, validateForm, changeStep, "Login")
 
     return (
         <>

@@ -29,7 +29,7 @@ const EmailForm = ({changeStep}:FormProps) => {
     }
 
     const  initialForm = {email:""}
-    const {form, errors, loading, response, handleChange, handleBlur, handleSubmit} = useForm(initialForm, validateForm, changeStep)
+    const {form, errors, loading, response, handleChange, handleBlur, handleSubmit} = useForm(initialForm, validateForm, changeStep, "")
 
     return (
         <>

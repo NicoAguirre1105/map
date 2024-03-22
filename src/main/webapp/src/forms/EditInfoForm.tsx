@@ -28,7 +28,7 @@ export function EditInfoForm({handleClick, label}:FormProps){
     }
 
     const  initialForm = {email:""}
-    const {form, errors, loading, response, handleChange, handleBlur, handleSubmit} = useForm(initialForm, validateForm, handleClick)
+    const {form, errors, loading, response, handleChange, handleBlur, handleSubmit} = useForm(initialForm, validateForm, handleClick, "")
 
     return (
         <>

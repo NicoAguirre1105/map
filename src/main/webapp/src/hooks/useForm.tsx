@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "../route/axios";
 
 interface Form_prompt {
     email?: string,
@@ -32,13 +33,36 @@ interface FormElement extends HTMLFormElement {
 export function useForm(
     initialForm: Form_prompt, 
     validateForm: Function, 
-    submit: Function
+    submit: Function,
+    type: string
     ): FormReturn{
     const [form, setForm] = useState(initialForm);
     const [errors, setErrors] = useState({})
     const [loading, setLoading] = useState(false)
     const [response, setResponse] = useState(0)
     const [tried, setTried] = useState(false)
+
+    const rel_url = (t:string):string => {
+        switch (t) {
+            case "Login":
+                return "/login"
+            case "Register":
+                return "/register"
+            case "User Information":
+                return ""
+            case "Verification_reg":
+                return "/registration/confirm"
+            case "New Password":
+                return "/reset-password"
+            // case "Email":
+            //     break
+            // case "Edit Information":
+            //     form = <EditInfoForm changeStep={changeStep}/>
+            //     break 
+            default:
+                return ""
+        }
+    }
 
     const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
         const name = e.currentTarget.name
@@ -53,16 +77,27 @@ export function useForm(
         }
     };
 
-    const handleSubmit = (e: React.FormEvent<FormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<FormElement>) => {
         e.preventDefault()
         setTried(true)
         let temp_errors = validateForm(form) 
         setErrors(temp_errors)
-        console.log(Object.keys(temp_errors).length)
 
         if(Object.keys(temp_errors).length === 0){
             setLoading(true)
-            // Mandar a backend la informacion y corroborar que no haya ese correo usando
+            try {
+                console.log(form)
+                const res = await axios.post("/login", JSON.stringify({email:"user@gmail.com", password:"100"}), 
+                {
+                    headers: {
+                        'Content-Type': 'aplication/json'
+                    },
+                    withCredentials: true
+                })
+                console.log(res.data)
+            } catch (error) {
+                console.log("Error with server")
+            }
             setLoading(false)
             setResponse(1)
             submit()
