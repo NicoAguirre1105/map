@@ -36,6 +36,7 @@ function App(): JSX.Element {
     const fetchDocuments = async (): Promise<void> => {
       try {
         const response = await axios.get('http://localhost:8081/api/viewRULE_SET');
+        console.log(response);
         const rules: Rule[] = response.data.rules;
         const modifiedRules = rules.map((rule: Rule) => ({
           ...rule,
@@ -46,6 +47,24 @@ function App(): JSX.Element {
       } catch (error) {
         console.error('Error fetching documents:', error);
         setLoading(false);
+      }
+    };
+    fetchDocuments();
+  }, []);
+
+  useEffect(() => {
+    const fetchDocuments = async (): Promise<void> => {
+      try {
+        const response = await axios.post('http://localhost:8081/auth/login',
+        {"email":"user@gmail.com", "password": "100"},{
+           headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json'
+           },
+        },);
+        console.log(response);
+      } catch (error) {
+        console.error('Error testing auth backend:', error);
       }
     };
     fetchDocuments();
